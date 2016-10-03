@@ -1,4 +1,4 @@
-angular.module("recipes", ["ui.router"])
+angular.module("recipes", ["ui.router", "ngAnimate", "templates"])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -6,11 +6,20 @@ angular.module("recipes", ["ui.router"])
 
 	$stateProvider
 	.state("home", {
-		url: "/home",
-		template: "<p>You're at the HOME view</p>"
+		url: "/",
+		templateUrl: "home.html",
+		controller: "HomeCtrl"
 	})
-	.state("about", {
-		url: "/about",
-		template: "<p>You're at the ABOUT view</p>"
+	.state("test", {
+		url: "/test",
+		templateUrl: "test.html"
 	})
+	.state("recipes", {
+		url: "/recipe",
+		templateUrl: "/recipes.html",
+		controller: "recipes_controller"
+	});
+
+	// default fall back route
+	$urlRouterProvider.otherwise('/');
 });
